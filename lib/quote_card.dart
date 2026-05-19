@@ -27,18 +27,37 @@ class QuoteCard extends StatelessWidget {
               ),
               const SizedBox(height: 6.0),
               Text(
-                quote.author,
+                '- ${quote.author}',
                 style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.grey[800],
                 ),
               ),
-              SizedBox(height: 8.0),
-              FlatButton.icon(
-                onPressed: delete,
-                label: Text('delete quote'),
-                icon: Icon(Icons.delete),
-              )
+              const SizedBox(height: 8.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Chip(
+                    label: Text(quote.category),
+                    backgroundColor: Colors.blueAccent.shade100.withOpacity(0.2),
+                  ),
+                  Row(
+                    children: [
+                      Text('${quote.likes}', style: const TextStyle(fontSize: 16.0)),
+                      IconButton(
+                        icon: const Icon(Icons.thumb_up),
+                        color: Colors.blue,
+                        onPressed: onLike,
+                      ),
+                      TextButton.icon(
+                        onPressed: delete,
+                        label: const Text('delete'),
+                        icon: const Icon(Icons.delete),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ],
           ),
         )
