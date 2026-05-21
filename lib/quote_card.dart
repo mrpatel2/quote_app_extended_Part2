@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
 import 'quote.dart';
 
 class QuoteCard extends StatelessWidget {
@@ -42,7 +42,9 @@ class QuoteCard extends StatelessWidget {
                   children: [
                     Chip(
                       label: Text(quote.category),
-                      backgroundColor: Colors.blueAccent.shade100.withOpacity(0.2),
+                      backgroundColor: Colors.blueAccent.shade100.withOpacity(
+                        0.2,
+                      ),
                     ),
                     Text(
                       DateFormat('MMM d, yyyy').format(quote.createdAt),

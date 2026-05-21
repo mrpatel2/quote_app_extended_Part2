@@ -10,6 +10,6 @@ class Quote {
     required this.author,
     this.category = 'General',
     this.likes = 0,
-    DateTime? createdAt,                        // initially null
+    DateTime? createdAt, // initially null
   }) : createdAt = createdAt ?? DateTime.now(); // Assign current time if null
 }
