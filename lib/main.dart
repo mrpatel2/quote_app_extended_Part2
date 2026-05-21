@@ -1,3 +1,9 @@
+/* Mihir Patel
+   CPSC 4150/6150
+   Net Ninja Quote Lab Features 1 (Category/Tag), 2 (Date Added), and 3 (Likes Counter) 
+   May 24, 2026
+*/
+
 import 'package:flutter/material.dart';
 import 'quote.dart';
 import 'quote_card.dart';
@@ -40,7 +46,6 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        // We map through the quotes and pass the data and functions down to the QuoteCard
         children: quotes
             .map(
               (quote) => QuoteCard(
