@@ -1,14 +1,8 @@
-/* Mihir Patel
-   CPSC 4150/6150
-   Net Ninja Quote Lab Features 1 (Category/Tag), 2 (Date Added), and 3 (Likes Counter) 
-   May 24, 2026
-*/
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'quote.dart';
 
-class QuoteCard extends StatelessWidget {
+class QuoteCard extends StatefulWidget {
   final Quote quote;
   final VoidCallback delete;
   final VoidCallback onLike;
@@ -21,6 +15,11 @@ class QuoteCard extends StatelessWidget {
   });
 
   @override
+  State<QuoteCard> createState() => _QuoteCardState();
+}
+
+class _QuoteCardState extends State<QuoteCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
@@ -29,55 +28,12 @@ class QuoteCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
-            ),
+            Text(widget.quote.text, style: TextStyle(fontSize: 18.0, color: Colors.grey[600])),
             const SizedBox(height: 6.0),
-            Text(
-              '- ${quote.author}',
-              style: TextStyle(fontSize: 14.0, color: Colors.grey[800]),
-            ),
+            Text('- ${widget.quote.author}', style: TextStyle(fontSize: 14.0, color: Colors.grey[800])),
             const SizedBox(height: 8.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Wrap(
-                  spacing: 8.0,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Chip(
-                      label: Text(quote.category),
-                      backgroundColor: Colors.blueAccent.shade100.withOpacity(
-                        0.2,
-                      ),
-                    ),
-                    Text(
-                      DateFormat('MMM d, yyyy').format(quote.createdAt),
-                      style: TextStyle(color: Colors.grey[500], fontSize: 12.0),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '${quote.likes}',
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.thumb_up),
-                      color: Colors.blue,
-                      onPressed: onLike,
-                    ),
-                    TextButton.icon(
-                      onPressed: delete,
-                      label: const Text('delete'),
-                      icon: const Icon(Icons.delete),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            // Bottom Row (Placeholder for next steps)
+            const Text('Card Foundation Updated'),
           ],
         ),
       ),
