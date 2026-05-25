@@ -7,7 +7,12 @@ class QuoteCard extends StatefulWidget {
   final VoidCallback delete;
   final VoidCallback onLike;
 
-  const QuoteCard({super.key, required this.quote, required this.delete, required this.onLike});
+  const QuoteCard({
+    super.key,
+    required this.quote,
+    required this.delete,
+    required this.onLike,
+  });
 
   @override
   State<QuoteCard> createState() => _QuoteCardState();
@@ -19,11 +24,16 @@ class _QuoteCardState extends State<QuoteCard> {
   // feature 5: category theme logic
   Color _getThemeColor() {
     switch (widget.quote.category) {
-      case 'Inspiration': return Colors.green.shade700;
-      case 'Humor': return const Color.fromARGB(255, 167, 98, 42);
-      case 'Truth': return const Color.fromARGB(255, 182, 81, 225);
-      case 'Wisdom': return Colors.teal.shade700;
-      default: return Colors.blue.shade700;
+      case 'Inspiration':
+        return Colors.green.shade700;
+      case 'Humor':
+        return const Color.fromARGB(255, 167, 98, 42);
+      case 'Truth':
+        return const Color.fromARGB(255, 182, 81, 225);
+      case 'Wisdom':
+        return Colors.teal.shade700;
+      default:
+        return Colors.blue.shade700;
     }
   }
 
@@ -32,7 +42,7 @@ class _QuoteCardState extends State<QuoteCard> {
     Color themeColor = _getThemeColor();
 
     return Card(
-      color: themeColor.withOpacity(0.05), 
+      color: themeColor.withOpacity(0.05),
       margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
       shape: RoundedRectangleBorder(
         side: BorderSide(color: themeColor.withOpacity(0.5), width: 1),
@@ -43,9 +53,19 @@ class _QuoteCardState extends State<QuoteCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(widget.quote.text, style: TextStyle(fontSize: 18.0, color: Colors.grey[800])),
+            Text(
+              widget.quote.text,
+              style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
+            ),
             const SizedBox(height: 6.0),
-            Text('- ${widget.quote.author}', style: TextStyle(fontSize: 14.0, color: themeColor, fontWeight: FontWeight.bold)),
+            Text(
+              '- ${widget.quote.author}',
+              style: TextStyle(
+                fontSize: 14.0,
+                color: themeColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 8.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,36 +75,57 @@ class _QuoteCardState extends State<QuoteCard> {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Chip(
-                      label: Text(widget.quote.category, style: const TextStyle(color: Colors.white)),
+                      label: Text(
+                        widget.quote.category,
+                        style: const TextStyle(color: Colors.white),
+                      ),
                       backgroundColor: themeColor, // category theme
                     ),
-                    Text(DateFormat('MMM d, yyyy').format(widget.quote.createdAt), style: TextStyle(color: Colors.grey[800], fontSize: 12.0)),
+                    Text(
+                      DateFormat('MMM d, yyyy').format(widget.quote.createdAt),
+                      style: TextStyle(color: Colors.grey[800], fontSize: 12.0),
+                    ),
                   ],
                 ),
                 Row(
                   children: [
-                    Text('${widget.quote.likes}', style: TextStyle(fontSize: 16.0, color: themeColor)),
-                    IconButton(icon: const Icon(Icons.thumb_up), color: themeColor, onPressed: widget.onLike),
+                    Text(
+                      '${widget.quote.likes}',
+                      style: TextStyle(fontSize: 16.0, color: themeColor),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.thumb_up),
+                      color: themeColor,
+                      onPressed: widget.onLike,
+                    ),
                     // feature 4: Local state variable for delete confirmation
                     if (_isConfirmingDelete)
                       Row(
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.check_circle, color: Colors.red),
+                            icon: const Icon(
+                              Icons.check_circle,
+                              color: Colors.red,
+                            ),
                             onPressed: widget.delete, // Actually deletes it
                           ),
                           IconButton(
                             icon: const Icon(Icons.cancel, color: Colors.grey),
-                            onPressed: () => setState(() => _isConfirmingDelete = false), // Cancels deleting
+                            onPressed: () => setState(
+                              () => _isConfirmingDelete = false,
+                            ), // Cancels deleting
                           ),
                         ],
                       )
                     else
                       TextButton.icon(
-                        onPressed: () => setState(() => _isConfirmingDelete = true), 
+                        onPressed: () =>
+                            setState(() => _isConfirmingDelete = true),
                         label: const Text('delete'),
                         icon: const Icon(Icons.delete),
-                        style: TextButton.styleFrom(foregroundColor: Colors.red),
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.red,
+                        ),
                       ),
                   ],
                 ),

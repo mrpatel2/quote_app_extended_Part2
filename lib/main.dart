@@ -35,9 +35,9 @@ class _QuoteListState extends State<QuoteList> {
       category: 'Truth',
     ),
     Quote(
-      author: 'Socrates', 
-      text: 'The only true wisdom is in knowing you know nothing', 
-      category: 'Wisdom'
+      author: 'Socrates',
+      text: 'The only true wisdom is in knowing you know nothing',
+      category: 'Wisdom',
     ),
   ];
 
@@ -47,28 +47,30 @@ class _QuoteListState extends State<QuoteList> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          'Awesome Quotes', 
-          style: TextStyle(color: Colors.white), 
+          'Awesome Quotes',
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.grey[900],
       ),
-      body: SingleChildScrollView( 
+      body: SingleChildScrollView(
         child: Column(
           children: quotes
-              .map((quote) => QuoteCard(
-                    quote: quote,
-                    delete: () {
-                      setState(() {
-                        quotes.remove(quote);
-                      });
-                    },
-                    onLike: () {
-                      setState(() {
-                        quote.likes++;
-                      });
-                    },
-                  ))
+              .map(
+                (quote) => QuoteCard(
+                  quote: quote,
+                  delete: () {
+                    setState(() {
+                      quotes.remove(quote);
+                    });
+                  },
+                  onLike: () {
+                    setState(() {
+                      quote.likes++;
+                    });
+                  },
+                ),
+              )
               .toList(),
         ),
       ),
