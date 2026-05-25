@@ -7,35 +7,41 @@ class QuoteCard extends StatefulWidget {
   final VoidCallback delete;
   final VoidCallback onLike;
 
-  const QuoteCard({
-    super.key,
-    required this.quote,
-    required this.delete,
-    required this.onLike,
-  });
+  const QuoteCard({super.key, required this.quote, required this.delete, required this.onLike});
 
   @override
   State<QuoteCard> createState() => _QuoteCardState();
 }
 
 class _QuoteCardState extends State<QuoteCard> {
+  // feature 4: Local state variable for delete confirmation
+  bool _isConfirmingDelete = false;
+
+  // feature 4: category theme logic
+  Color _getThemeColor() {
+    switch (widget.quote.category) {
+      case 'Inspiration': return Colors.green;
+      case 'Humor': return Colors.orange;
+      case 'Truth': return Colors.purple;
+      case 'Wisdom': return Colors.teal;
+      default: return Colors.blue;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    Color themeColor = _getThemeColor();
+
     return Card(
+      color: themeColor.withOpacity(0.05), 
       margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(widget.quote.text, style: TextStyle(fontSize: 18.0, color: Colors.grey[600])),
-            const SizedBox(height: 6.0),
-            Text('- ${widget.quote.author}', style: TextStyle(fontSize: 14.0, color: Colors.grey[800])),
-            const SizedBox(height: 8.0),
-            // Bottom Row (Placeholder for next steps)
-            const Text('Card Foundation Updated'),
-          ],
-        ),
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: themeColor.withOpacity(0.5), width: 1), 
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Text('Logic Added!'),
       ),
     );
   }
