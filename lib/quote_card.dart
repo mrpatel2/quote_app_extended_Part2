@@ -20,8 +20,8 @@ class _QuoteCardState extends State<QuoteCard> {
   Color _getThemeColor() {
     switch (widget.quote.category) {
       case 'Inspiration': return Colors.green.shade700;
-      case 'Humor': return Colors.orange.shade800;
-      case 'Truth': return Colors.purple.shade700;
+      case 'Humor': return const Color.fromARGB(255, 167, 98, 42);
+      case 'Truth': return const Color.fromARGB(255, 182, 81, 225);
       case 'Wisdom': return Colors.teal.shade700;
       default: return Colors.blue.shade700;
     }
