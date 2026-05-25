@@ -58,7 +58,7 @@ class _QuoteCardState extends State<QuoteCard> {
                       label: Text(widget.quote.category, style: const TextStyle(color: Colors.white)),
                       backgroundColor: themeColor, // category theme
                     ),
-                    Text(DateFormat('MMM d, yyyy').format(widget.quote.createdAt), style: TextStyle(color: Colors.grey[500], fontSize: 12.0)),
+                    Text(DateFormat('MMM d, yyyy').format(widget.quote.createdAt), style: TextStyle(color: Colors.grey[800], fontSize: 12.0)),
                   ],
                 ),
                 Row(
