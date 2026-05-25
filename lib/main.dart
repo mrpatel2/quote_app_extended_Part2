@@ -34,6 +34,11 @@ class _QuoteListState extends State<QuoteList> {
       text: 'The truth is rarely pure and never simple',
       category: 'Truth',
     ),
+    Quote(
+      author: 'Socrates', 
+      text: 'The only true wisdom is in knowing you know nothing', 
+      category: 'Wisdom'
+    ),
   ];
 
   @override
