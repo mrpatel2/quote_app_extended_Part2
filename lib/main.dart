@@ -44,31 +44,30 @@ class _QuoteListState extends State<QuoteList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Awesome Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.grey[900],
       ),
-      body: Column(
-        children: quotes
-            .map(
-              (quote) => QuoteCard(
-                quote: quote,
-                delete: () {
-                  setState(() {
-                    quotes.remove(quote);
-                  });
-                },
-                onLike: () {
-                  setState(() {
-                    quote.likes++;
-                  });
-                },
-              ),
-            )
-            .toList(),
+      body: SingleChildScrollView( 
+        child: Column(
+          children: quotes
+              .map((quote) => QuoteCard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    },
+                    onLike: () {
+                      setState(() {
+                        quote.likes++;
+                      });
+                    },
+                  ))
+              .toList(),
+        ),
       ),
     );
   }
-}
