@@ -19,11 +19,11 @@ class _QuoteCardState extends State<QuoteCard> {
   // feature 5: category theme logic
   Color _getThemeColor() {
     switch (widget.quote.category) {
-      case 'Inspiration': return Colors.green;
-      case 'Humor': return Colors.orange;
-      case 'Truth': return Colors.purple;
-      case 'Wisdom': return Colors.teal;
-      default: return Colors.blue;
+      case 'Inspiration': return Colors.green.shade700;
+      case 'Humor': return Colors.orange.shade800;
+      case 'Truth': return Colors.purple.shade700;
+      case 'Wisdom': return Colors.teal.shade700;
+      default: return Colors.blue.shade700;
     }
   }
 
